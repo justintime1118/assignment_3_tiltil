@@ -3,7 +3,7 @@
 import { useAuth } from "@/app/(providers)/_contexts/auth.context";
 import { FormEventHandler, useState } from "react";
 
-function LogInForm() {
+function SignUpForm() {
   const [id, setId] = useState("");
   const [pw, setPw] = useState("");
 
@@ -12,29 +12,42 @@ function LogInForm() {
   const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
 
-    const url = `${window.location.origin}/api/auth/log-in`;
+    const url = `${window.location.origin}/api/auth/sign-in`;
     const options = { method: "POST", body: JSON.stringify({ id, pw }) };
     const response = await fetch(url, options);
     const data = await response.json();
 
     if (data === "OK" && response.status === 200) {
-      auth.setIsLoggedIn(true);
+      auth.signUp();
     } else {
-      alert("로그인 실패~");
+      alert("회원가입 실패~");
     }
   };
 
+  //TODO: 리덕스 셋팅 후 아이디 및 비밀번호 기본설정 해주기
+  // useEffect(() => {
+  //   setId()
+  // }, [])
+
   return (
     <form onSubmit={handleSubmit}>
-      <input type="text" value={id} onChange={(e) => setId(e.target.value)} />
       <input
+        className="border border-black"
+        type="text"
+        value={id}
+        onChange={(e) => setId(e.target.value)}
+      />
+      <input
+        className="border border-black"
         type="password"
         value={pw}
         onChange={(e) => setPw(e.target.value)}
       />
-      <button type="submit">로그인하기</button>
+      <button className="border border-black" type="submit">
+        회원가입
+      </button>
     </form>
   );
 }
 
-export default LogInForm;
+export default SignUpForm;

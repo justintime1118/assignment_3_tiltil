@@ -11,13 +11,17 @@ import {
 } from "react";
 
 type AuthContextValue = {
-  isLoggedIn: boolean;
-  setIsLoggedIn: Dispatch<SetStateAction<boolean>>;
+  isSignedIn: boolean;
+  signIn: () => void;
+  signOut: () => void;
+  signUp: () => void;
 };
 
 const initialValue: AuthContextValue = {
-  isLoggedIn: false,
-  setIsLoggedIn: () => {},
+  isSignedIn: false,
+  signIn: () => {},
+  signOut: () => {},
+  signUp: () => {},
 };
 
 const AuthContext = createContext<AuthContextValue>(initialValue);
@@ -25,18 +29,31 @@ const AuthContext = createContext<AuthContextValue>(initialValue);
 export const useAuth = () => useContext(AuthContext);
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isSignedIn, setIsSignedIn] = useState(false);
+
+  const signIn = () => {
+    setIsSignedIn(true);
+    alert("로그인 되었습니다");
+  };
+  const signOut = () => setIsSignedIn(false);
+  const signUp = () => {
+    setIsSignedIn(true);
+    alert("회원가입에 성공하였습니다");
+  };
+
   const value: AuthContextValue = {
-    isLoggedIn,
-    setIsLoggedIn,
+    isSignedIn: isSignedIn,
+    signIn: signIn,
+    signOut: signOut,
+    signUp: signUp,
   };
   const router = useRouter();
 
   useEffect(() => {
-    if (isLoggedIn) {
+    if (isSignedIn) {
       router.replace("/");
     }
-  }, [router, isLoggedIn]);
+  }, [router, isSignedIn]);
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }

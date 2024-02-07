@@ -1,36 +1,18 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## 04. 과제
 
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- 요구사항
+  1. 헤더 V
+     1. 왼쪽에 로고
+     2. 가운데에 메뉴는 트렌딩과 최신
+     3. 오른쪽에 회원가입과 로그인 버튼
+  2. 페이지 - 각 페이지 별로 렌더링 하는 내용은 그냥 다 똑같이 전체 포스팅으로 하고, UI랑 컴포넌트 재사용만 잘 해둬라
+     1. 홈페이지 : 피드들의 목록 → 주제별로 분류한다던가… 트렌딩과 최신과는 조금 다르게
+     2. 트렌딩 페이지 : ~~지금 인기 있는 TIL 들의 목록~~ 그냥 전체 목록
+     3. 최신 페이지 : 갓 올라온 TIL 들의 목록
+     4. 회원가입 페이지 → AuthContext로
+     5. 로그인 페이지 → AuthContext로
+     6. 프로필 페이지 → 닉네임 수정 기능 구현 → Redux로 -> 닉네임은 본인 실명으로 해서 POST 쏠 때도 본인 이름 들어가게
+  3. 기능
+     1. 로그인 기능
+     2. 글 렌더링
+     3. redux로 → 닉네임 수정 + 수정하고 싶은 프로필 정보 더 넣어도 무방

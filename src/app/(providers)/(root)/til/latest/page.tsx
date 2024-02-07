@@ -1,12 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import PostList from "./til/_components/PostList";
-import PostListItem from "./til/_components/PostListItem";
+import React, { useEffect, useState } from "react";
+import { Post } from "../_components/PostListItem/PostListItem";
 import axios, { AxiosResponse } from "axios";
-import { Post } from "./til/_components/PostListItem/PostListItem";
+import PostList from "../_components/PostList";
 
-function HomePage() {
+function LatestPage() {
   const [posts, setPosts] = useState<Post[]>([]);
 
   const getAllPosts = async () => {
@@ -26,11 +25,11 @@ function HomePage() {
   return (
     <div>
       <section>
-        <h1>Homepage</h1>
+        <h1>Latestpage</h1>
         <PostList listTitle="TILs" posts={posts} />
       </section>
     </div>
   );
 }
 
-export default HomePage;
+export default LatestPage;

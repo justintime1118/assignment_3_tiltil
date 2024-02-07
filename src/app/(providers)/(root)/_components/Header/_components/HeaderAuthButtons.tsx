@@ -6,7 +6,7 @@ function HeaderAuthButtons() {
       <Link href="/sign-up" prefetch>
         회원가입하기
       </Link>
-      <Link href="/log-in">로그인하기</Link>
+      <Link href="/sign-in">로그인하기</Link>
     </div>
   );
 }
